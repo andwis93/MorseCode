@@ -1,6 +1,6 @@
 package org.morsecode;
 
-public class Main {
+public class MorseCode {
     public static void main(String[] args) {
         Translator translator = new Translator();
         translator.translateToLatin(".... . .-.. .-.. --- _ . ...- . .-. -.-- # -... --- -.. ...-- -.-- ");
