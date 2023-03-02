@@ -1,31 +1,29 @@
 package org.morsecode;
 
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicReference;
-
 public class Translator {
+
     Dictionary dictionary = new Dictionary();
 
-    public void translateToLatin(String morseCode) {
+    public String translateToLatin(String morseCode) {
         String[] theMorse = morseCode.split(" ");
-        AtomicReference<String> word = new AtomicReference<>("");
-        Arrays.stream(theMorse).forEach(morse ->
-                word.updateAndGet(letter -> letter + returnLetter(morse))
-        );
-        System.out.println(word.get());
+        StringBuilder translation= new StringBuilder();
+        for(String morse: theMorse){
+            translation.append(returnLatin(morse));
+        }
+        return translation.toString();
     }
 
-    public void translateToMorse(String latinWords) {
+    public String translateToMorse(String latinWords) {
         String[] theLatin = latinWords.split("");
-        AtomicReference<String> word = new AtomicReference<>("");
-        Arrays.stream(theLatin).forEach(latin ->
-                word.updateAndGet(letter -> letter + returnMorse(latin))
-        );
-        System.out.println(word.get());
+        StringBuilder translation= new StringBuilder();
+        for(String letter: theLatin){
+            translation.append(returnMorse(letter));
+        }
+        return translation.toString();
     }
 
-    private String returnLetter(String morse) {
-        dictionary.createForLatin();
+    private String returnLatin(String morse) {
+        dictionary.create();
         if (dictionary.getDictionary().containsKey(morse)) {
             return dictionary.getDictionary().get(morse);
         } else {
@@ -38,9 +36,9 @@ public class Translator {
     }
 
     private String returnMorse(String latin) {
-        dictionary.createForMorse();
+        dictionary.create();
         latin = latin.toUpperCase();
-        if (dictionary.getDictionary().containsValue(latin)) {
+        if (dictionary.getDictionary().containsKey(latin)) {
             return dictionary.getDictionary().get(latin) + " ";
         } else {
             if(latin.equals(" ")) {

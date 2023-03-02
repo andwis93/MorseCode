@@ -6,7 +6,10 @@ import java.util.Map;
 public class Dictionary {
     private final Map<String,String> dictionary = new HashMap<>();
 
-    public void createForLatin() {
+    public Dictionary() {
+    }
+
+    public Map<String,String> create() {
         dictionary.put(".-", "A");
         dictionary.put("-...", "B");
         dictionary.put("-.-.", "C");
@@ -43,9 +46,6 @@ public class Dictionary {
         dictionary.put("---..", "8");
         dictionary.put("----.", "9");
         dictionary.put("-----", "O");
-    }
-
-    public void createForMorse() {
         dictionary.put("A",".-");
         dictionary.put("B", "-...");
         dictionary.put("C", "-.-.");
@@ -82,6 +82,7 @@ public class Dictionary {
         dictionary.put("8", "---..");
         dictionary.put("9", "----.");
         dictionary.put("0", "-----");
+        return dictionary;
     }
 
     public Map<String, String> getDictionary() {
