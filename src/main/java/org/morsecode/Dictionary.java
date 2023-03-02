@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Dictionary {
-    private final Map<String,String> dictionary = new HashMap<>();
+    private Map<String,String> dictionary = new HashMap<>();
 
     public Dictionary() {
+        this.dictionary = create();
     }
 
     public Map<String,String> create() {

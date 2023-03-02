@@ -23,7 +23,6 @@ public class Translator {
     }
 
     private String returnLatin(String morse) {
-        dictionary.create();
         if (dictionary.getDictionary().containsKey(morse)) {
             return dictionary.getDictionary().get(morse);
         } else {
@@ -36,7 +35,6 @@ public class Translator {
     }
 
     private String returnMorse(String latin) {
-        dictionary.create();
         latin = latin.toUpperCase();
         if (dictionary.getDictionary().containsKey(latin)) {
             return dictionary.getDictionary().get(latin) + " ";
